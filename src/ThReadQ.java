@@ -8,7 +8,6 @@ public class ThReadQ extends Thread{
 BlockingQueue qFileNames;
 BlockingQueue qFileArrays ;
 String  file_info ;
-int start , end;
     public ThReadQ (BlockingQueue q ,BlockingQueue q2){
         this.qFileNames = q;
         this.qFileArrays =q2;
@@ -18,24 +17,25 @@ int start , end;
         super.run(); 
   
         try {
-         
-           String filename =Homework.blockingQueueNames.pop().toString();
-            System.out.println(filename);
+while (!qFileNames.isEmpty()){
+           String filename =qFileNames.pop().toString();
         String SFile = FileUtils.readFileAsString(filename);
        
         int numDigit =0 , numLetter =0, numSympol =0;
-        for (int i = 0; i< SFile.length() ; i++){
+        for (int ii = 0; ii< SFile.length() ; ii++){
         char [] c = SFile.toCharArray();
         Character character = new Character (' ');
-        if (character.isDigit(c[i]))
+        if (character.isDigit(c[ii]))
             numDigit ++;
-        else if (character.isLetter(c[i]))
+        else if (character.isLetter(c[ii]))
             numLetter ++;
         else 
             numSympol ++;
         }
         file_info =filename +" "+numLetter+" ofLetters "+numDigit+" ofDigits "+numSympol+" rest";
-        Homework.blockingQueue.add(file_info);
+        qFileArrays.add(file_info);
+}
+        
         
     } catch (InterruptedException ex) {
         System.out.println(ex.getMessage());
