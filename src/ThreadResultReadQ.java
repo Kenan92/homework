@@ -14,8 +14,8 @@ qFileNames = q;
         super.run(); 
     try {
        for(int i=0; i<100; i++){
-        String result =  Homework.blockingQueueNames.pop().toString();
-           System.out.println(result.isEmpty());
+        String result =  qFileNames.pop().toString();
+ 
         FileUtils.appendStringToFile("result2019.txt", result);
         }
         
