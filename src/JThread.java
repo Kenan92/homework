@@ -14,7 +14,13 @@ import java.util.logging.Logger;
  */
 public class JThread extends Thread{
 
-  public  BlockingQueue q = new BlockingQueue(100);
+  public  BlockingQueue q;
+
+    public JThread(BlockingQueue q) {
+this.q=q;
+    }
+  
+  
 
     
     
@@ -23,7 +29,7 @@ public class JThread extends Thread{
           
         for (int i=0 ; i<100 ; i++)
             try {
-                Homework.blockingQueueNames.add("data\\f"+i+".txt"); //f0.txt --> f99.txt
+               q.add("data\\f"+i+".txt"); //f0.txt --> f99.txt
                 
             } catch (InterruptedException ex) {
                 System.out.println(ex.getMessage());
@@ -31,9 +37,7 @@ public class JThread extends Thread{
        
     }
    
-    public BlockingQueue get(){
-    return q;
-    }
+  
     
     
 }
