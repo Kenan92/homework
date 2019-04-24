@@ -20,10 +20,10 @@ String  file_info ;
 while (!qFileNames.isEmpty()){
            String filename =qFileNames.pop().toString();
         String SFile = FileUtils.readFileAsString(filename);
-       
+        char [] c = SFile.toCharArray();
         int numDigit =0 , numLetter =0, numSympol =0;
         for (int ii = 0; ii< SFile.length() ; ii++){
-        char [] c = SFile.toCharArray();
+       
         Character character = new Character (' ');
         if (character.isDigit(c[ii]))
             numDigit ++;

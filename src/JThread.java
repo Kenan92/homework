@@ -27,8 +27,9 @@ this.q=q;
     @Override
     public void run() {
           
-        for (int i=0 ; i<100 ; i++)
+      
             try {
+                  for (int i=0 ; i<100 ; i++)
                q.add("data\\f"+i+".txt"); //f0.txt --> f99.txt
                 
             } catch (InterruptedException ex) {
